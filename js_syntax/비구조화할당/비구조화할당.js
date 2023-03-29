@@ -11,7 +11,7 @@ const captainAmerica = {
 };
 
 function print(hero) {
-  const { alias, name, actor } = hero;
+  const { alias, name, actor } = hero; // key를 써주면 그 키가 할당됨
   const text = `${alias}(${name}) 역할을 맡은 배우는 ${actor} 입니다.`;
   console.log(text);
 }
