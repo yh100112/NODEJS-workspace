@@ -15,12 +15,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/node_modules', express.static(path.join(__dirname + '/node_modules')));
 
 app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
 app.use('/html_test', require('./routes/html_test'));
 app.use('/script', require('./routes/script'));
-app.use('/script_event', require('./routes/script_event'));
+app.use('/val', require('./routes/val'));
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
