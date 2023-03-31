@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8">
+		<title>jQuery</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+		<script>
+			$( document ).ready( function() {
+				$( 'button#jbInputButton' ).click( function() {
+					var jb = $( 'input#jbInput' ).val();
+					alert( jb );
+				} );
+			} );
+		</script>
+	</head>
+	<body>
+		<p><input type="text" id="jbInput"> <button id="jbInputButton">Click</button></p>
+	</body>
+</html>
