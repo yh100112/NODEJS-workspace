@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <style>
+    #sharp * { 
+      background-color: lightblue;
+    }
+    .container-class {
+      background-color: lightblue;
+    }
+    #parent h3 {
+      background-color: red;
+    }
+    div[class] {
+      background-color: blue;
+    }
+  </style>
+</head>
+<body>
+  <% for (let i = 0; i < 5; i++) { %>
+    <p><%= title %></p>
+  <% } %>
+  <div class="container-fluid" id="sharp">
+    <h1>h1 테그입니다</h1>
+    <h2>h2 테그입니다</h2>
+    <h3>h3 테그입니다</h3>
+    <p>p 테그입니다</p>
+  </div>
+  <div class="container-class">
+    <h1>h1 테그입니다</h1>
+    <h2>h2 테그입니다</h2>
+    <h3>h3 테그입니다</h3>
+    <p>p 테그입니다</p>
+  </div>
+  <div id="parent">
+    <div>
+      <h1>h1 태그</h1>
+      <h2>h2 태그</h2>
+      <h3>h3 태그</h3>
+      <p>p 태그</p>
+    </div>
+  </div>
+  <div class="container-class">
+    <h1>h1 태그</h1>
+  </div>
+  <div>
+    <h1>h1 태그</h1>
+  </div>
+</body>
+
+<!-- 
+css 선택자
+  # : id
+  * : 하위/자식 선택자 모두를 선택
+  #parent h3 : 하위/자식 중 h3태그만
+  []: 선택자(div)를 괄호 밖에 선택하고 해당 선택자를 가진 값 중 []안의 속성을 가진 곳
+
+
+-->
