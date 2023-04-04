@@ -5,16 +5,61 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script>
       $(function(){
+        // ok버튼 클릭시 ( 직접 전송 )
         $("#requestBtn").on("click", function() {
           $.post('/http_request', { age: 17, grade: "A+" }, function(data, status) {
             locatino.reload();
+          });
+        });
+
+        // 생성버튼 클릭시 ( form으로 전송 )
+        $("#rewardConfirm").on("click", function(){
+          $.post('/http_request/create', $('#rewardForm').serialize(), function(data){
+
           });
         });
       });
     </script>
   </head>
   <body>
+    <!--직접 전송-->
     <h1>$.post() 메소드</h1>
-    <button id="requestBtn">POST 방식으로 데이터 서버에 전송!</button>
+    <button id="requestBtn">ok</button>
+    
+    <!--form 으로 post 전송-->
+    <form id='rewardForm'>
+      <div>
+        <textarea id='message' name='msg' value='' rows='1' cols='40'></textarea>
+      </div>
+      <div>
+        <label>INFLATION 적용</label>
+        <div>
+          <input type='checkbox' id='infl_apply' name='infl_apply' value='1'></input>
+        </div>
+      </div>
+      <div>
+        <label>미스테리박스</label>
+        <div>
+          <div>
+            <label>
+              <input type='checkbox' id='is_mystery' name='mystery' value='1'></input>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div>
+        <label>지급시점</label>
+        <div>
+          <select id='give_time' name='gtime'>
+            <option id='give_time_once' value='1'>기간내 1회</option>
+            <option id='give_time_day' value='2'>매일 1회</option>
+          </select>
+        </div>
+      </div>
+    </form>
+
+    <div>
+      <button type='button' id='rewardConfirm'>생성</button>
+    </div>
   </body>
 </html>

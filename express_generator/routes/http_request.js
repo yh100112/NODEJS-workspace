@@ -17,4 +17,10 @@ router.post('/', function(req, res) {
   res.send();
 });
 
+router.post('/create', (req, res) => {
+  console.log(req.body);
+  console.log("form serialize()를 통해 post로 서버에 전송 성공!~~~~~~~~~~~~~~");
+  res.send();
+});
+
 module.exports = router;
