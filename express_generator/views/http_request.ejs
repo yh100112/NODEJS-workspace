@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script>
+      $(function(){
+        $("#requestBtn").on("click", function() {
+          $.post('/http_request', { age: 17, grade: "A+" }, function(data, status) {
+            locatino.reload();
+          });
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <h1>$.post() 메소드</h1>
+    <button id="requestBtn">POST 방식으로 데이터 서버에 전송!</button>
+  </body>
+</html>

@@ -3,8 +3,12 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var bodyParser = require('body-parser');
 
 var app = express();
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -22,8 +26,7 @@ app.use('/users', require('./routes/users'));
 app.use('/html_test', require('./routes/html_test'));
 app.use('/script', require('./routes/script'));
 app.use('/val', require('./routes/val'));
-
-
+app.use('/http_request', require('./routes/http_request'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
