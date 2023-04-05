@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script>
+      $(function(){
+        $("#rewardConfirm").on("click", function(){
+          // $.post('/excel_upload/create', $('#rewardForm').serialize(), function(data){
+          //   location.reload();
+          // });
+          $.ajax({
+            type: "POST",
+            url: "/excel_upload/create",
+            data: $('#rewardForm').serialize(),
+            success: function(data){
+              location.reload();
+            }
+          });
+        });
+      });
+      // $(function(){ 
+      //   $("#rewardConfirm").on("click", function(e){ 
+      //     e.preventDefault(); // form의 자체 submit 동작을 비활성
+      //     var formData = new FormData($('#rewardForm')[0]);
+      //     $.ajax({ 
+      //       url: '/excel_upload/create', 
+      //       type: 'POST', 
+      //       data: formData, 
+      //       contentType: false, 
+      //       processData: false, 
+      //       success: function(data){ location.reload(); } 
+      //     });
+      //   }); 
+      // }); 
+    </script>
+  </head>
+  <body>
+    <!--content-type : application/x-www-form-urlencoded; charset=UTF-8-->
+    <form id='rewardForm' enctype='multipart/form-data'>
+      <div>
+        <textarea id='message' name='msg' value='' rows='1' cols='40'></textarea>
+      </div>
+      <div>
+        <label>INFLATION 적용</label>
+        <div>
+          <input type='checkbox' id='infl_apply' name='infl_apply' value="1">
+        </div>
+      </div>
+      <div>
+        <label>미스테리박스</label>
+        <div>
+          <div>
+            <label>
+              <input type='checkbox' id='is_mystery' name='mystery' value='1'>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div>
+        <label>지급시점</label>
+        <div>
+          <select id='give_time' name='gtime'>
+            <option id='give_time_once' value='1'>기간내 1회</option>
+            <option id='give_time_day' value='2'>매일 1회</option>
+          </select>
+        </div>
+      </div>
+      <div>
+        <input type="file" name="excel_upload" accept="application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>
+        <!--이건 전송 안됨-->
+      </div>
+    </form>
+    <div>
+      <button type='button' id='rewardConfirm'>serialize로 전송!!</button>
+    </div>
+  </body>
+</html>

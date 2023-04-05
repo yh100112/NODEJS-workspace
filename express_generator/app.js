@@ -27,6 +27,7 @@ app.use('/html_test', require('./routes/html_test'));
 app.use('/script', require('./routes/script'));
 app.use('/val', require('./routes/val'));
 app.use('/http_request', require('./routes/http_request'));
+app.use('/excel_upload', require('./routes/excel_upload'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

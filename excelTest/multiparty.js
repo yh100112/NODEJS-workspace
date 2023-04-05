@@ -1,16 +1,9 @@
 const express = require('express');
 const http = require('http');
-const bodyParser = require('body-parser');
 const multiparty = require('multiparty'); // form 데이터를 json으로 처리
 const xlsx = require('xlsx');
  
 const app = express();
- 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-  limit: '150mb',
-  extended: false,
-}));
 
 // home page 
 app.get('/', (req, res, next) => {

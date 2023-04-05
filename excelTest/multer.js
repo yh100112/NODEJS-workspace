@@ -19,6 +19,7 @@ app.get('/', (req,res,next) => {
 });
 
 // single('name속성명') -> 파일 1개를 받음
+// multer 미들웨어 사용시 req객체에 file 프로퍼티가 생김
 app.post('/upload', upload.single('excelFile'), (req, res) => {
   const filePath = req.file.path;
   const workbook = xlsx.readFile(filePath);
@@ -26,6 +27,7 @@ app.post('/upload', upload.single('excelFile'), (req, res) => {
   const sheet = workbook.Sheets[sheetName];
   const data = xlsx.utils.sheet_to_json(sheet);
   console.log(data); // Do something with the data
+  console.log(req.file);
   res.send('File uploaded successfully');
 });
 
