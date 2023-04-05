@@ -3,35 +3,32 @@
   <head>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script>
-      $(function(){
-        $("#rewardConfirm").on("click", function(){
-          // $.post('/excel_upload/create', $('#rewardForm').serialize(), function(data){
-          //   location.reload();
-          // });
-          $.ajax({
-            type: "POST",
-            url: "/excel_upload/create",
-            data: $('#rewardForm').serialize(),
-            success: function(data){
-              location.reload();
-            }
-          });
-        });
-      });
-      // $(function(){ 
-      //   $("#rewardConfirm").on("click", function(e){ 
-      //     e.preventDefault(); // form의 자체 submit 동작을 비활성
-      //     var formData = new FormData($('#rewardForm')[0]);
-      //     $.ajax({ 
-      //       url: '/excel_upload/create', 
-      //       type: 'POST', 
-      //       data: formData, 
-      //       contentType: false, 
-      //       processData: false, 
-      //       success: function(data){ location.reload(); } 
+      // $(function(){
+      //   $("#rewardConfirm").on("click", function(){
+      //     $.ajax({
+      //       type: "POST",
+      //       url: "/excel_upload/create",
+      //       data: $('#rewardForm').serialize(), // serialize로 하면 파일 데이터는 전송되지 않는다.
+      //       success: function(data){
+      //         location.reload();
+      //       }
       //     });
-      //   }); 
-      // }); 
+      //   });
+      // });
+      $(function(){ 
+        $("#rewardConfirm").on("click", function(e){ 
+          e.preventDefault(); // form의 자체 submit 동작을 비활성
+          var formData = new FormData($('#rewardForm')[0]);
+          $.ajax({ 
+            url: '/excel_upload/create', 
+            type: 'POST', 
+            data: formData, 
+            contentType: false, 
+            processData: false, 
+            success: function(data){ location.reload(); } 
+          });
+        }); 
+      }); 
     </script>
   </head>
   <body>

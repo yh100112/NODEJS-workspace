@@ -39,8 +39,8 @@ router.post('/create', (req, res) => {
   });
 
   form.parse(req);
-  console.log(req.headers['content-type']); // multipart/form-data
-  console.log(req.body); // text 데이터 담김 ( input type=file이 아닌 모든 input들 )
+  // console.log(req.headers['content-type']); // multipart/form-data
+  // console.log(req.body); // text 데이터 담김 ( input type=file이 아닌 모든 input들 )
 });
 
 module.exports = router;
