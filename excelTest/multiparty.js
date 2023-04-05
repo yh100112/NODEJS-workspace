@@ -12,39 +12,46 @@ app.use(bodyParser.urlencoded({
   extended: false,
 }));
 
- 
+// home page 
 app.get('/', (req, res, next) => {
   let contents = '';
-  contents += '<html><body>';
-  contents += '   <form action="/" method="POST" enctype="multipart/form-data">';
-  contents += '       <input type="file" name="xlsx" />';
-  contents += '       <input type="submit" />';
-  contents += '   </form>';
-  contents += '</body></html>';
+  contents += `
+  <html><body>
+    <form action="/" method="POST" enctype="multipart/form-data">
+      <input type="file" name="excel_upload" accept="application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"/>
+      <input type="submit"/>
+    </form>
+  </body></html>
+  `;
   res.send(contents);
 });
  
 app.post('/', (req, res, next) => {
   const resData = {};
 
-  const form = new multiparty.Form({
-    autoFiles: true,
-  });
+  // const form = new multiparty.Form({
+  //   autoFiles: true,
+  // });
+  const form = new multiparty.Form();
 
+  // file을 옵션으로 주면 자동으로 autoFiles가 true로 세팅됨
   form.on('file', (name, file) => {
-    const workbook = xlsx.readFile(file.path); // xlsx를 이용해 전달된 파일을 객체로 변환한다.
-    const sheetnames = Object.keys(workbook.Sheets);
+    const filePath = file.path;
+    const workbook = xlsx.readFile(filePath);        // xlsx를 이용해 전달된 파일을 객체로 변환한다.
+    const sheetnames = Object.keys(workbook.Sheets); // 엑셀 sheet 이름들이 배열로 담김
 
     let i = sheetnames.length;
 
-    // 시트별 내용을 결과 객체에 담는다.
+    // sheet가 여러개일 때 처리
     while (i--) {
       const sheetname = sheetnames[i];
       resData[sheetname] = xlsx.utils.sheet_to_json(workbook.Sheets[sheetname]); // 시트의 내용을 json객체로 변환하는 작업 수행
+      console.log(resData[sheetname]);
     }
   });
 
   form.on('close', () => {
+    console.log('파일 서버에 업로드 완료!');
     res.send(resData);
   });
 
