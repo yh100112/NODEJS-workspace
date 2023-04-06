@@ -13,6 +13,9 @@ app.get('/', (req,res,next) => {
       <input type="file" name="excelFile">
       <input type="text" name="message">
       <input type="submit" value="Upload">
+      <div>
+        <input type='checkbox' id='inflation_apply' name='inflation_apply' value='1'></input>
+      </div>
     </form>
   </body></html>
   `;
@@ -30,7 +33,7 @@ app.post('/upload', upload.single('excelFile'), (req, res) => {
 
   console.log(data); // 엑셀 데이터 처리
 
-  console.log(req.body.message); // input text에 입력한 값 넣어져있음
+  console.log(req.body); // input text에 입력한 값 넣어져있음
 
   console.log(req.file); // multer 미들웨어 사용시 req객체에 file 프로퍼티가 생김 -> 전송되는 파일이 1개일 때
 
