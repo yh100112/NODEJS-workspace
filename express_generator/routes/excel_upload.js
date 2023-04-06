@@ -34,7 +34,6 @@ router.post('/create', (req, res) => {
   });
 
   form.on('close', () => {
-    console.log('엑셀 파일 업로드 완료!');
     res.send();
   });
 

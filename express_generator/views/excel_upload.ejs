@@ -5,6 +5,7 @@
     <script>
       // $(function(){
       //   $("#rewardConfirm").on("click", function(){
+      //     var formData = $('#rewardForm').serialize();
       //     $.ajax({
       //       type: "POST",
       //       url: "/excel_upload/create",
@@ -35,7 +36,7 @@
     <!--content-type : application/x-www-form-urlencoded; charset=UTF-8-->
     <form id='rewardForm' enctype='multipart/form-data'>
       <div>
-        <textarea id='message' name='msg' value='' rows='1' cols='40'></textarea>
+        <textarea id='message' name='message' value='' rows='1' cols='40'></textarea>
       </div>
       <div>
         <label>INFLATION 적용</label>
@@ -56,7 +57,7 @@
       <div>
         <label>지급시점</label>
         <div>
-          <select id='give_time' name='gtime'>
+          <select id='give_time' name='giving_time'>
             <option id='give_time_once' value='1'>기간내 1회</option>
             <option id='give_time_day' value='2'>매일 1회</option>
           </select>
